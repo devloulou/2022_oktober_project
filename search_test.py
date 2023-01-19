@@ -17,4 +17,6 @@ movie = tmdb.Movies(response[0]['id'])
 # for item in movie.credits()['cast']:
 #     print(item)
 
-# https://image.tmdb.org/t/p/original/vfrQk5IPloGg1v9Rzbh2Eg3VGyM.jpg
+# https://image.tmdb.org/t/p/original/bI1ZDRkerXrcaFa5kWjEMw80aqE.jpg
+# 
+# /vfrQk5IPloGg1v9Rzbh2Eg3VGyM.jpg

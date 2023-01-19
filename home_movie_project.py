@@ -16,3 +16,21 @@ http requestek segítségével fogjuk az adatokat lekérni.
 A teljes feladat git kezelve lesz
 
 """
+
+"""
+3 féle megoldás lesz: 
+1. file alapon tároljuk le a metaadatot
+2. postgres-ben tároljuk le a metaadatot
+3. mongodb-ben tároljuk le a metaadatot
+
+Feladat lépései:
+1. kilistázom a mappában lévő fileokat: kiterjesztés alapján - mkv
+2. API hívás: lekérem cím alapján a filmekhez tartozó metaadatokat
+3. a metadat alapján letöltöm a képet és kiírom file-ba
+4. letárolom a metaadatot
+
+adatbázis kezelése legyen 1 modul: 4. 
+file kezelés legyen 1 modul: 1 pont, 3. pont, 4. pont
+API kezelés legyen 1 modul
+
+"""
