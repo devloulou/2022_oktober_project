@@ -34,3 +34,12 @@ file kezelés legyen 1 modul: 1 pont, 3. pont, 4. pont
 API kezelés legyen 1 modul
 
 """
+
+"""
+PostgreSQL oldali megoldása a meta data letöltőnek:
+a képek maradnak úgy, ahogy vannak
+a search_module marad úgy ahogy van
+
+4. letárolom a metaadatot -> a json kiírás helyett, adatbázis betöltésre van szükségünk
+
+"""

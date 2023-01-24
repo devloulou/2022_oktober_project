@@ -1,6 +1,7 @@
 import os
 import json
 
+
 class FileHandler:
     # class attributok - ő az osztályhoz tarozik
     # valami/valami/fo_mappa
@@ -15,6 +16,7 @@ class FileHandler:
         self.__movie_folder = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'movies') 
         self.__create_necessary_folders()
         self.json_path = None
+        self.poster_path = None
 
     @property
     def movie_folder(self):
@@ -62,8 +64,19 @@ class FileHandler:
             json.dump(data, f, ensure_ascii=False, indent=4)
     
     # elv: egy függvény 1 dologért legyen felelős -> clean code
-    def get_json_path(self, movie_name):
+    def set_json_path(self, movie_name):
         self.json_path = os.path.join(self.metadata_folder, f"{movie_name}.json")
+
+    def set_poster_path(self, movie_name):
+        self.poster_path = os.path.join(self.poster_folder, f"{movie_name}.jpg")
+
+    def write_image(self, image_binary):
+        try:
+            with open(self.poster_path, "wb") as poster:
+                poster.write(image_binary)
+        except Exception as e:
+            return False, str(e)
+
 
 if __name__ == '__main__':
     test = FileHandler()
