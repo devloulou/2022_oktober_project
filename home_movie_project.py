@@ -43,3 +43,15 @@ a search_module marad úgy ahogy van
 4. letárolom a metaadatot -> a json kiírás helyett, adatbázis betöltésre van szükségünk
 
 """
+
+
+"""
+Hiba:
+nem vizsgáljuk egyik megoldásnál sem, hogy a filmhez van-e letöltve metaadat
+
+Bonyolítás:
+ha törlök egy filmet a mappából, akkor mi történjen
+
+ha hozzáadok egy filmet a mappából, akkor mi történjen
+
+"""
