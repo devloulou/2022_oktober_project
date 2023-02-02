@@ -1,7 +1,6 @@
 import os
 import json
 
-
 class FileHandler:
     # class attributok - ő az osztályhoz tarozik
     # valami/valami/fo_mappa
@@ -37,21 +36,22 @@ class FileHandler:
         if not os.path.exists(self.metadata_folder):
             os.mkdir(self.metadata_folder)
 
-    def get_data_from_folder(self):
+    @staticmethod
+    def get_data_from_folder(folder_path):
         """
         1. Nézzük meg, hogy létezik e a folder
         2. kislistázzuk os.listdir -el a mappa tartalmát - kiterjsztés vizsgálat!!
         3. itt elég csak a file-ok neve -> nem kell a teljes elérési útvonal
         """
-        if not os.path.exists(self.__movie_folder):
-            raise FileNotFoundError(f"{self.__movie_folder} is not exists!")
+        if not os.path.exists(folder_path):
+            raise FileNotFoundError(f"{folder_path} is not exists!")
 
         # temp = []
         # for item in os.listdir(self.__movie_folder):
         #     if item[-4:] == '.mkv':
         #         temp.append(item[:-4])
 
-        return [item[:-4] for item in os.listdir(self.__movie_folder) if item[-4:] == '.mkv']
+        return [item[:-4].replace(".", '') for item in os.listdir(folder_path) if item.endswith(('.mkv', '.json', '.jpg'))]
 
     def write_json(self, data):
         """
@@ -77,9 +77,26 @@ class FileHandler:
         except Exception as e:
             return False, str(e)
 
+    @staticmethod
+    def delete_file(file_path):
+        if not os.path.exists(file_path):
+            print(f"The given file: {file_path} not exists!")
+            return
+        os.remove(file_path)
 
 if __name__ == '__main__':
     test = FileHandler()
 
-    test.get_json_path('Alien')
-    test.write_json({'adult': False, 'backdrop_path': '/3RJ0B8JnwuOaQf6qmwTILXibcJj.jpg', 'genre_ids': [28, 878, 14], 'id': 941520, 'original_language': 'en', 'original_title': 'Alien Sniperess', 'overview': 'A female sniper on military leave promises to fulfill her fiancé’s dying wish until she encounters a hostile alien invasion and is tasked with saving countless lives.', 'popularity': 315.116, 'poster_path': '/bI1ZDRkerXrcaFa5kWjEMw80aqE.jpg', 'release_date': '2022-04-08', 'title': 'Alien Sniperess', 'video': False, 'vote_average': 3.9, 'vote_count': 13})
+    # test.get_json_path('Alien')
+    # test.write_json({'adult': False, 'backdrop_path': '/3RJ0B8JnwuOaQf6qmwTILXibcJj.jpg', 'genre_ids': [28, 878, 14], 'id': 941520, 'original_language': 'en', 'original_title': 'Alien Sniperess', 'overview': 'A female sniper on military leave promises to fulfill her fiancé’s dying wish until she encounters a hostile alien invasion and is tasked with saving countless lives.', 'popularity': 315.116, 'poster_path': '/bI1ZDRkerXrcaFa5kWjEMw80aqE.jpg', 'release_date': '2022-04-08', 'title': 'Alien Sniperess', 'video': False, 'vote_average': 3.9, 'vote_count': 13})
+
+    meta = test.get_data_from_folder(r'C:\WORK\2022_oktober_project\Metadata')
+    movies = test.get_data_from_folder(r'C:\WORK\2022_oktober_project\movies')
+
+    diff_del = [item for item in meta if item not in movies]
+
+    diff_download = [item for item in movies if item not in meta]
+    # a diff az, amit le kell törölni
+    
+    print(f"diff_del: {diff_del}")
+    print(f"diff_download: {diff_download}")
