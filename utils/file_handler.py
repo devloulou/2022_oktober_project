@@ -1,7 +1,6 @@
 import os
 import json
 
-
 class FileHandler:
     # class attributok - ő az osztályhoz tarozik
     # valami/valami/fo_mappa
@@ -52,10 +51,7 @@ class FileHandler:
         #     if item[-4:] == '.mkv':
         #         temp.append(item[:-4])
 
-        return [item[:-4].replace(".", '') for item in os.listdir(folder_path) if item.endswith(('.mkv', '.json'))]
-
-    
-
+        return [item[:-4].replace(".", '') for item in os.listdir(folder_path) if item.endswith(('.mkv', '.json', '.jpg'))]
 
     def write_json(self, data):
         """

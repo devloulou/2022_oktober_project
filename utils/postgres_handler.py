@@ -7,8 +7,6 @@ from utils.sql_helper import (create_tmdb_movies,
                                 insert_tmdb_movies,
                                 insert_tmdb_genre_ids)
 
-
-
 # nativ sql-re alapozzuk
 class PostgresHandler:
     def __init__(self):
@@ -35,7 +33,6 @@ class PostgresHandler:
                 conn.execute(text(insert_tmdb_movies), data)
                 genre_ids = [{'id': data['id'], 'genre_id': item} for item in data['genre_ids']]       
                 conn.execute(text(insert_tmdb_genre_ids), genre_ids)
-
             except Exception as e:
                 print(str(e))
 
@@ -43,6 +40,14 @@ class PostgresHandler:
         with self.engine.connect() as conn:
             conn.execute('delete from tmdb_genre_ids')
             conn.execute('delete from tmdb_movies')
+
+    def run_query(self, query):
+        with self.engine.connect() as conn:
+            try:
+                conn.execute(query)
+            except Exception as e:
+                print(str(e))
+
 
 if __name__ == '__main__':
     test = PostgresHandler()
@@ -68,5 +73,7 @@ if __name__ == '__main__':
         "vote_count": 13
     }  
 
-    test.delete_data()
-    test.insert_movies(test_data)
+    test.run_query('drop table tmdb_movies')
+
+    # test.delete_data()
+    # test.insert_movies(test_data)

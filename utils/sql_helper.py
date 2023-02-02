@@ -48,7 +48,9 @@ insert
 	title,
 	video,
 	vote_average,
-	vote_count)
+	vote_count,
+	poster_location,
+	movie_location)
 values(:adult,
 :backdrop_path,
 :id,
@@ -61,7 +63,9 @@ values(:adult,
 :title,
 :video,
 :vote_average,
-:vote_count);
+:vote_count,
+:poster_location,
+:movie_location);
 """
 
 insert_tmdb_genre_ids = """
@@ -70,3 +74,11 @@ insert into tmdb_genre_ids (
     genre_id
 ) values (:id, :genre_id)
 """
+
+delete_from_genre = """delete from tmdb_genre_ids
+where id in (select id from tmdb_movies t
+where t.original_title = '{movie}')"""
+
+
+delete_from_tmdb_movies = """delete from tmdb_movies
+where original_title = '{movie}'"""

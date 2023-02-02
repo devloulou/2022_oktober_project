@@ -54,4 +54,13 @@ ha törlök egy filmet a mappából, akkor mi történjen
 
 ha hozzáadok egy filmet a mappából, akkor mi történjen
 
+
+Postgreses feladat:
+az adatbázisból kell majd a metaadatot törölni
+
+Data Enrichment - done
+Meglévő adatokat "dúsítasz", plusz információval látsz el
+
+
+
 """
