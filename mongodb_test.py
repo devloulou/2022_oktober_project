@@ -1,7 +1,5 @@
 from pymongo import MongoClient
 
-
-
 # connection string
 client = MongoClient("mongodb://localhost:27017")
 database = client['own_db']
@@ -11,7 +9,7 @@ coll = database['test_col']
 # insert - adatlétrehozás
 my_dict = {"kulcs": "érték"}
 
-# coll.insert_one(my_dict)
+print(coll.insert_one(my_dict).inserted_id)
 
 my_dict = [{"kulcs": "érték"}, {"kulcs": "érték"}, {"kulcs": "érték"}, {"kulcs": "érték"},{"kulcs": "érték"}]
 # coll.insert_many(my_dict)
