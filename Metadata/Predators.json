@@ -1,0 +1,20 @@
+{
+    "adult": false,
+    "backdrop_path": "/zWhEhVvswpKolTp1rmUdK30mMov.jpg",
+    "genre_ids": [
+        878,
+        28,
+        53
+    ],
+    "id": 34851,
+    "original_language": "en",
+    "original_title": "Predators",
+    "overview": "A group of cold-blooded killers find themselves trapped on an alien planet to be hunted by extraterrestrial Predators.",
+    "popularity": 58.537,
+    "poster_path": "/54LZIRznS0Zjn7ZDXrsGVe3HXei.jpg",
+    "release_date": "2010-07-03",
+    "title": "Predators",
+    "video": false,
+    "vote_average": 6.2,
+    "vote_count": 3519
+}
